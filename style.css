@@ -96,3 +96,11 @@ main {
 .movie:hover .overview{
   transform: translateY(0);
 }
+
+main h1{
+  background-color: #475842;
+  border: 2px solid var(--secondaryColor);
+  border-radius: 10px;
+  padding: 0.5rem;
+  color:#bbc7be;
+}

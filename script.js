@@ -12,10 +12,14 @@ getMovies(apiURL);
 
 
 function getMovies(url) {
-   
+  
     fetch(url).then(sag=>sag.json()).then(data=> {
-        showMovies(data.results);
+        if(data.total_results){
+        showMovies(data.results);}else {
+            main.innerHTML = '<h1> Movie not find</h1>'
+        }
     }) 
+    
 
 }
 
@@ -48,15 +52,18 @@ function showMovies(data){
     function getcolor(vote){
         if(vote>=8){return "green"}
         else if(vote>=5){ return "orange"}
-        else {return "red"}
+        else {return "red"};
     }
 
-    form.addEventListener('submit',(e)=>{
+    form.addEventListener('submit',(e)=> {
             
         e.preventDefault();
         const searchTerm = search.value;
         if(searchTerm){
             getMovies(searchURL+ '&query=' + searchTerm)
-        }
+            }else {getMovies(apiURL);}    
     })
+
     
+//     search input form problem ,SOLVED  &
+// error massage has made.
