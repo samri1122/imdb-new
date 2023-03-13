@@ -4,12 +4,15 @@ const baseURL ='https://api.themoviedb.org/3';
 const apiURL = baseURL +'/discover/movie?sort_by=popularity.desc&'+apiKey;
 const imgURL = 'https://image.tmdb.org/t/p/w500';
 const searchURL = baseURL +'/search/movie?'+apiKey;
+const genreURL = baseURL + '/genre/movie/list?'+apiKey;
+
 const main = document.getElementById('main');
 const form = document.getElementById('form'); 
-const search = document.getElementById('search');    
+const search = document.getElementById('search');  
+const genreButton = document.getElementById('button');  
 
 getMovies(apiURL);
-
+getgenre(genreURL);
 
 function getMovies(url) {
   
@@ -65,5 +68,12 @@ function showMovies(data){
     })
 
     
-//     search input form problem ,SOLVED  &
-// error massage has made.
+function getgenre(url){
+    fetch(url).then(gav=>gav.json()).then(data1=> {usegenre(data1.genres);
+    })}
+    
+function usegenre(data1){
+    data1.forEach(janr=>{
+        const {name , id} = janr ;
+    })
+}
